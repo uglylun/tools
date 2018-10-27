@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#mach_list=$(cut -d' ' -f1 /root/passwd.list | sort)
+mach_list=$(awk -F'[ @]' '{print $1, $NF}' /root/passwd.list)
+echo -e "\033[32m$mach_list \033[0m"

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+host=$1
+go_cmd=$(awk -v hostname="$host" -F" sshpass" '{if(hostname==$1){print $2}}' /root/passwd.list)
+
+if [ "X$go_cmd" = "X" ];then
+    echo "not such host"
+else
+    go_cmd=sshpass$go_cmd
+    eval $go_cmd
+fi
